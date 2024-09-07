@@ -13,7 +13,7 @@ def generate_response(image_paths: List[str], user_prompt: str = ""):
     base64_images = [convert_image(x) for x in image_paths]
 
     instruction_prompt = ""
-    with open('instruction_prompt.txt','r') as f:
+    with open('instruction_prompt.txt','r',encoding="utf8") as f:
         instruction_prompt = f.read()
     
     
