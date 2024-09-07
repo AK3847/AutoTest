@@ -60,14 +60,15 @@ textarea {
     box-sizing: border-box;
     background-color: #f9df91;
     font-family: "IBM Plex Mono", monospace;
-
+    
 }
 button {
+    border-radius: calc(5rem + 10vw);
     background-color: #3498db;
     color: #fff;
+    font-family: "IBM Plex Mono", monospace;
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
