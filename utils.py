@@ -116,7 +116,7 @@ def generate_response(image_paths: List[str], user_prompt: str = "") -> None:
         ],
     )
 
-    print(response.choices[0].message.content)
+    # print(response.choices[0].message.content)
     trim_response = (
         response.choices[0]
         .message.content.replace("```markdown", "")
