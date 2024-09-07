@@ -13,6 +13,9 @@ def convert_image(image_path: str):
         base64_string = base64.b64encode(f.read()).decode('utf-8')
     return base64_string
 
+def delete_images(image_path: str):
+    if os.path.exists(image_path):
+        os.remove(image_path)
 
 def generate_response(image_paths: List[str], user_prompt: str = ""):
 
@@ -50,8 +53,11 @@ def generate_response(image_paths: List[str], user_prompt: str = ""):
     )
 
     print(response.choices[0].message.content)
-    trim_response = response.choices[0].message.content.replace('``markdown',"").replace('```',"")
+    trim_response = response.choices[0].message.content.replace('```markdown',"").replace('```',"")
     with open('response_markdown.md','w') as f:
         f.write(trim_response)
+
+    for image in image_paths:
+        delete_images(image)
 
     
