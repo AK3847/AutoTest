@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Test</title>
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h1>Image and Text Processor</h1>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="images">Upload Images:</label>
+                    <input type="file" id="images" name="images" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="text_input">Text Input (optional):</label>
+                    <textarea id="text_input" name="text_input" rows="4"></textarea>
+                </div>
+                <button type="submit">Process</button>
+            </form>
+        </div>
+        <div class="output-section">
+            <div id="output">
+                <h2>Output</h2>
+                {{output_html|safe}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
