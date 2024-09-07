@@ -1,5 +1,11 @@
 import base64
 from typing import List
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 def convert_image(image_path: str):
     base64_string = ""
@@ -16,4 +22,35 @@ def generate_response(image_paths: List[str], user_prompt: str = ""):
     with open('instruction_prompt.txt','r',encoding="utf8") as f:
         instruction_prompt = f.read()
     
+    client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+    
+    response = client.chat.completions.create(
+        max_tokens = 16000,
+        model = 'gpt-4o-mini',
+        messages = [
+            {
+                "role" : "system",
+                "content" : f"{instruction_prompt}"
+            },
+            {
+                "role" : "user",
+                "content" : [
+                    {"type" : "text", "text" : f"{user_prompt}"},
+                    *[
+                        {
+                            "type" : "image_url" , "image_url" : {
+                                "url" : f"data:image/png;base64,{base64_image}"
+                            }
+                        }
+                        for base64_image in base64_images
+                    ]
+                ]
+            }
+        ]
+    )
+
+    print(response.choicse[0].message.content)
+    with open('response_markdown.md','w') as f:
+        f.write(response.choicse[0].message.content)
+
     
