@@ -7,7 +7,7 @@ Return the response in text format which can be displayed easily using Markdown 
 Template:
 
 - Test Case ID: 
-Test cases should all bear unique IDs to represent them
+Test cases should all bear unique IDs to represent them. Format : TC-{RelevantShortAlias}-{Unique Number}
 
 - Type of Test Case : 
 Choose one From - [Functionality, Performance, Unit, User Interface, Security, Integration, Database, Usability, User Acceptance, Regression]
