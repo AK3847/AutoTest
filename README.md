@@ -25,3 +25,5 @@
 ![Generated-Output-1](/screenshots/image1.png)
 ![Generated-Output-2](/screenshots/image2.png)
 
+## Time-Taken: 
+> ~3hrs coding (0.5 for logic & prompt + 2.5 for coding & bug-fixing) + 1hr for Readme and video
