@@ -26,7 +26,8 @@ Document the detailed steps necessary to execute the test case, including the ac
     4. Click the "Enter" or "Login" button.
 
 - Test Data:
-Define any necessary test data that needs to be used.
+Define any necessary test data that needs to be used while performing the Test 
+(Example : User Data, Login credentials etc.)
 
 - Post Condition:
 Specify any cleanup tasks that need to be performed after running the test case, such as reverting settings or deleting files created during the test.
