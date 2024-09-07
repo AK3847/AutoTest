@@ -46,7 +46,7 @@ def save_test_cases() -> None:
         None
     """
     markdown_content = ""
-    with open("response_markdown.md", "r") as f:
+    with open("response_markdown.md", "r",encoding="utf-8") as f:
         markdown_content = f.read()
 
     test_cases = []
