@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
 import os
-from pygments.formatters import HtmlFormatter
+import markdown2
 
 from utils import generate_response
-
 
 app = Flask(__name__)
 
@@ -31,10 +30,13 @@ def index():
                 file_paths.append(file_path)
             
         generate_response(image_paths=file_paths,user_prompt=text_input)
-
-        return render_template('index.html')
+        response_md = open('response_markdown.md','r')
+        response_md_html = markdown2.markdown(
+            response_md.read()
+        )
+        return render_template('index.html',output_html = response_md_html)
     return render_template('index.html')
         
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="127.0.0.3")
