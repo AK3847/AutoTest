@@ -7,19 +7,44 @@ import os, re
 load_dotenv()
 
 
-def convert_image(image_path: str):
+def convert_image(image_path: str) -> str:
+    """
+    Converts an image file to a base64 encoded string.
+
+    Args:
+        image_path (str): The path to the image file.
+
+    Returns:
+        str: The base64 encoded string representation of the image.
+
+    """
     base64_string = ""
     with open(image_path, "rb") as f:
         base64_string = base64.b64encode(f.read()).decode("utf-8")
     return base64_string
 
 
-def delete_images(image_path: str):
+def delete_images(image_path: str) -> None:
+    """
+    Deletes the image file at the specified path.
+
+    Args:
+        image_path (str): The path of the image file to be deleted.
+
+    Returns:
+        None
+    """
     if os.path.exists(image_path):
         os.remove(image_path)
 
 
-def save_test_cases():
+def save_test_cases() -> None:
+    """
+    Reads a markdown file containing test case information
+    and saves each test case as a separate text file with filename == Test Case Name.
+    Returns:
+        None
+    """
     markdown_content = ""
     with open("response_markdown.md", "r") as f:
         markdown_content = f.read()
@@ -49,7 +74,17 @@ def save_test_cases():
                 f.write(f"{k}: {v}\n")
 
 
-def generate_response(image_paths: List[str], user_prompt: str = ""):
+def generate_response(image_paths: List[str], user_prompt: str = "") -> None:
+    """
+    Generates a response using OpenAI's chat completions API.
+    Saves the original response in response_markdown.md and individual
+    test-cases via save_test_cases()
+    Args:
+        image_paths (List[str]): A list of file paths to the images.
+        user_prompt (str, optional): The user's prompt. Defaults to "".
+    Returns:
+        None
+    """
     base64_images = [convert_image(x) for x in image_paths]
 
     instruction_prompt = ""
