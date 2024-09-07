@@ -49,8 +49,9 @@ def generate_response(image_paths: List[str], user_prompt: str = ""):
         ]
     )
 
-    print(response.choicse[0].message.content)
+    print(response.choices[0].message.content)
+    trim_response = response.choices[0].message.content.replace('``markdown',"").replace('```',"")
     with open('response_markdown.md','w') as f:
-        f.write(response.choicse[0].message.content)
+        f.write(trim_response)
 
     
